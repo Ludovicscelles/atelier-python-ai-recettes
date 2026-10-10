@@ -1,0 +1,367 @@
+version de Python affichée chez vous
+
+
+À vous (E1)
+Créez le fichier reponses.txt dans atelier-python (dans VS Code : clic droit dans l'explorateur de fichiers,
+Nouveau fichier). Notez-y la version de Python affichée chez vous, et le chemin de pip. Ce chemin contient-il le
+mot .venv  ?
+
+ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % python3 --version
+Python 3.13.7
+
+
+chemin de pip
+
+ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % python3 -m pip --version
+pip 25.2 from /opt/homebrew/lib/python3.13/site-packages/pip (python 3.13)
+
+ le chemin de pip. Ce chemin contient-il le mot .venv  ?
+
+ non
+
+À vous (E2)
+1. Tapez deactivate , relancez python verifier.py ( python3 sur Mac), comparez avec la capture de 2.4 :
+quelles lignes ont changé ? Réactivez ensuite l'environnement avec la commande de 2.3.
+2. Expliquez en deux phrases pourquoi on partage requirements.txt et jamais le dossier .venv .
+
+
+ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % pyth
+on3 verifier.py 
+Python version: 3.13.7
+Interpréteur: /opt/homebrew/opt/python@3.13/bin/python3.13
+Environnement virtuel actif: False
+  requests absent
+  python-dotenv absent
+  pydantic absent
+  pytest absent
+  openai absent
+ludovicscelles@MacBook-Pro-de-L
+ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % 
+
+Les lignes des dépendances ont changé, elles sont toutes indiquées comme absentes.
+Le chemin de l'interpréteur a également changé : Python utilise désormais l'interpréteur global installé avec Homebrew au lieu de celui du .venv
+La ligne "Environnement virtuel" est passée à False.
+
+On partage requirements.txt car il contient la liste des dépendances nécessaires au projet et permet de recréer le même environnement.
+
+On ne partage jamais le dossier .venv car il est volumineux et contient l'environnement virtuel spécifique à la machine du développeur.
+
+
+À vous (E3)
+Relancez l'interpréteur et prévoyez le résultat de chaque ligne avant de l'exécuter : 10 // 3 , 10 % 3 ,
+"crêpes".capitalize() , str(30) + " min" , len("oeufs") . Notez vos prévisions et les vrais résultats dans
+reponses.txt .
+
+10 // 3 devrait rendre : 3
+sortie réelle : 3
+
+10 % 3 devrait rendre : 1
+sortie réelle : 1
+
+"crêpes".capitalize() devrait rendre : Crêpes
+sortie réelle = 'Crêpes'
+
+str(30) + " min" devrait rendre : 30 min
+sortie réelle = '30 min'
+
+len("oeufs") devrait rendre : 5
+sortie réelle = 5
+
+
+
+À vous (E4 et E5)
+E4. À la fin de bases.py, écrivez une fonction est_rapide(temps_min, seuil=20) qui rend True si la recette se
+prépare en seuil minutes ou moins. Affichez le résultat de est_rapide(15), est_rapide(30) et
+est_rapide(30, seuil=45) .
+
+
+def est_rapide(temps_min, seuil=20):
+    return temps_min <= seuil
+
+print("Est rapide ?", est_rapide(15))
+print("Est rapide ?", est_rapide(30))
+print("Est rapide ?", est_rapide(30, seuil=45))
+
+Est rapide ? True
+Est rapide ? False
+Est rapide ? True
+
+print("Difficulté :", recette.get("difficulte", "non renseignée"))
+
+E5. Faites en sorte que la ligne « Difficulté » affiche facile au lieu de « non renseignée », en ne modifiant qu'une
+seule ligne du fichier. Laquelle avez-vous changée, et pourquoi la ligne avec get n'a-t-elle pas eu besoin d'être
+touchée ?
+
+recette = {
+    "titre": titre,
+    "temps_min": temps_min,
+    "note": note,
+    "vegetarien": vegetarien,
+    "ingredients": ingredients,
+    "difficulte": "facile"
+}
+
+print("Difficulté :", recette.get("difficulte", "non renseignée"))
+
+
+J'ai ajouté la paire clé/valeur "difficulte" : "facile" dans le dictionnaire de la recette.
+La ligne avec get n'a pas besoin d'être modifiée, car recette.get("difficulte", "non renseignée") recupère déja la valeur associée à la clé "difficulte". 
+La valeur "non renseignée" est utilisée uniquement si cette clé n'existe pas dans le dictionnaire.
+
+"""
+À vous (E6)
+Dans explorer.py , affichez : la liste des recettes portant l'étiquette sans_gluten et leur nombre ; les desserts
+triés du plus rapide au plus long, avec leur temps ; le titre de la recette la plus longue, en une ligne, avec max et
+son paramètre key
+
+"""
+
+sans_gluten = [r["titre"] for r in recettes if "sans_gluten" in r["tags"]]
+print("Recettes sans gluten :", len(sans_gluten), sans_gluten)
+
+desserts = sorted(
+    [r for r in recettes if r["categorie"] == "dessert"], 
+    key=lambda r: r["temps_min"]
+    )
+print("Desserts triés du plus rapide au plus long :", [(r["titre"], r["temps_min"]) for r in desserts])
+
+print(max(recettes, key=lambda r: r["temps_min"])["titre"], "est la recette la plus longue à réaliser")
+
+
+
+"""
+
+À vous (E7)
+Ajoutez au module recettes.py une fonction par_categorie(recettes, categorie) qui rend les recettes d'une
+catégorie donnée, avec une compréhension de liste et une docstring. Placez-la au-dessus du bloc __main__ .
+Appelez-la depuis utiliser.py pour afficher les entrées ( "entree" , sans accent dans le fichier), avec resumer .
+
+"""
+
+dans fichier recettes.py
+
+def par_categorie(recettes, categorie):
+    """Rend les recettes de la catégorie donnée"""
+    categorie = categorie.lower()
+    return [r for r in recettes if r["categorie"] == categorie]
+
+dans fichier utiliser.py
+
+from recettes import filtrer_par_temps, resumer, par_categorie
+
+for r in par_categorie(toutes, "entree"):
+    print("Entrée :", resumer(r))
+
+
+""""
+
+À vous (E8)
+Dans l'interpréteur, tapez int("trente") . Notez le type d'erreur. Écrivez ensuite, dans erreurs.py , un bloc try
+/ except qui convertit ce texte et affiche « Nombre illisible : » suivi du message de l'erreur.
+
+""""
+
+try:
+    int("trente")
+except ValueError as err:
+    print("Nombre illisible :", err)
+
+
+""""
+
+À vous (E9)
+Ajoutez au .env une variable MODELE_TEMPERATURE=0.2 , et à config.py une constante TEMPERATURE qui la lit,
+avec 0.7 par défaut. Attention : os.getenv rend toujours un texte. Affichez la valeur et son type : il doit être
+float .
+
+"""
+
+dans fichier .env
+
+MODELE_URL=http://127.0.0.1:8000/v1
+MODELE_CLE=sk-atelier-local
+MODELE_NOM=modele-local
+MODELE_TEMPERATURE=0.2
+
+dans fichier config.py
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+URL = os.getenv("MODELE_URL", "http://127.0.0.1:8000/v1")
+CLE = os.getenv("MODELE_CLE")
+NOM = os.getenv("MODELE_NOM", "modele-local")
+TEMPERATURE = float(os.getenv("MODELE_TEMPERATURE", 0.7))
+
+if __name__ == "__main__":
+    print("URL :", URL)
+    print("Nom :", NOM)
+    print("Clé :", CLE[:6] + "..." if CLE else "absente")
+    print("Température :", TEMPERATURE, "type", type(TEMPERATURE).__name__)
+
+
+
+""""
+
+À vous (E10)
+Dans le bloc __main__ , ajoutez un appel à demander("Est-ce que le gratin se congèle ?", temperature=0)
+et affichez la réponse et le détail des jetons. Combien de jetons la question a-t-elle coûté, et combien la réponse ?
+
+""""
+
+dans fichier appel_request.py
+
+if __name__ == "__main__":
+  try:
+    donnees = demander("Par quoi remplacer le beurre dans une tarte ?")
+    print("Réponse :", donnees["choices"][0]["message"]["content"])
+    print("Jetons :", donnees["usage"])
+
+    donnees = demander("Est-ce que le gratin se congèle ?", temperature=0)
+    print("Réponse :", donnees["choices"][0]["message"]["content"])
+    print("Jetons :", donnees["usage"])
+
+  except requests.ConnectionError:
+    print("Le modèle ne répond pas : est-il lancé dans l'autre terminal ?")
+  except requests.HTTPError as err:
+    print("Le modèle a refusé la requête :", err.response.status_code, err.response.json()["error"]["message"])
+
+
+dans le terminal 
+
+
+(.venv) ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % python appel_request.py
+Réponse : La plupart des ingrédients se remplacent : dites-moi lequel manque et dans quelle recette.
+Jetons : {'prompt_tokens': 11, 'completion_tokens': 22, 'total_tokens': 33}
+Réponse : La plupart des plats cuits se gardent trois jours au frais, dans une boîte fermée.
+Jetons : {'prompt_tokens': 8, 'completion_tokens': 20, 'total_tokens': 28}
+
+La question "Est-ce que le gratin se congèle ?" a coûté 8 jetons et la réponse 20 jetons.
+
+
+""""
+
+À vous (E11)
+Ajoutez une troisième question à la liste : « Et si un invité est allergique aux arachides ? ». Relancez. Que répond le
+modèle, et combien de messages sont partis au dernier appel ? Expliquez ce nombre
+
+""""
+
+dans fichier appel_sdk.py
+
+historique = [{"role": "system", "content": "Tu es l'assistant d'un site de recettes."}]
+for question in [
+    "Je n'ai plus de crème, je mets quoi ?", 
+    "Et pour la conserver ?", 
+    "Et si un invité est allergique aux arachides ?"
+    ]:
+    historique.append({"role": "user", "content": question})
+    rep = client.chat.completions.create(
+        model=config.NOM,
+        messages=historique,
+    )
+    texte = rep.choices[0].message.content
+    historique.append({"role": "assistant", "content": texte})
+    print(f"Vous : {question}")
+    print(f"Modèle : {texte}")
+print("Messages envoyés au dernier appel :", len(historique) -1, "messages")
+
+# A la question "Et si un invité est allergique aux arachides ?" le modèle réponds 
+# "Vous pouvez remplacer les arachides par des noix de cajou, des amandes ou des graines de tournesol."
+# 6 messages sont partis au dernier appel, c'est-à-dire 3 questions et 3 réponses.
+
+
+""""
+
+À vous (E12)
+Dans l'interpréteur, tapez from schemas import Classement , puis Classement(intention="autre",
+confiance=0.5) . Quelle erreur obtenez-vous, et que dit-elle ? Qu'en déduisez-vous sur une réponse de modèle
+qui oublierait un champ ?
+
+"""""
+
+dans l'interpréteur, j'obtiens l'erreur suivante :
+
+>>> from schemas import Classement
+>>> Classement(intention="autre", confiance=0.5)
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    Classement(intention="autre", confiance=0.5)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ludovicscelles/Documents/ensitech/ateliers/python/atelier-python/.venv/lib/python3.13/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Classement
+reponse
+  Field required [type=missing, input_value={'intention': 'autre', 'confiance': 0.5}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+>>> 
+
+Dans l'interpréteur, j'obtiens une ValidationError de Pydantic, indiquant qu'un champ requis nommé "reponse" est manquant. (Field required, type=missing).
+
+La création de l'instance de Classement échoue donc, car les données fournies ne respectent pas le schéma défini par la classe. 
+
+J'en déduis que si une réponse générée par le modèle oublie un champ obligatoire, Pydantic détectera cette anomalie lors de la validation 
+et lèvera une erreur au lieu d'accepter une réponse incomplète.
+
+
+"""""
+À vous (E13)
+Ajoutez à tests/test_recettes.py un test test_chercher_sans_resultat  : chercher « chocolat » dans EXEMPLE
+rend une liste vide. Combien de tests passent ?
+
+"""""
+
+
+dans fichier tests/test_recettes.py
+
+def test_chercher_sans_resultat():
+    assert chercher_ingredient(EXEMPLE, "chocolat") == []
+
+10 tests passent, car la fonction chercher_ingredient renvoie bien une liste vide lorsqu'aucune recette ne contient l'ingrédient "chocolat" dans l'exemple fourni.
+
+
+""""
+À vous (E14)
+Le jeu de questions est-il équilibré ? Dans un nouveau fichier compter.py , lisez donnees/questions.csv et
+affichez, avec Counter , le nombre de questions par intention attendue. Quelle intention est la moins
+représentée ?
+
+"""
+
+import csv
+from collections import Counter
+
+with open("donnees/questions.csv", encoding="utf-8", newline="") as f:
+    lignes = list(csv.DictReader(f, delimiter=";"))
+print(Counter(ligne["intention_attendue"] for ligne in lignes))
+
+# L'intention la moins représentée est 'autre' avec 2 questions sur 20.
+
+""""
+
+À vous (E15)
+Posez à l'assistant, avec --sources , les questions « Une idée de dessert au chocolat ? » et « Que faire avec des
+lentilles ? ». Notez les réponses et les fiches utilisées. Puis trouvez une question sur une recette qui existe mais que
+la recherche ne retrouve pas, et expliquez pourquoi en vous servant de la fonction mots .
+
+""""
+
+
+(.venv) ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % python assistant.py "Avez-vous une idée de dessert au chocolat ?" --sources
+D'après la fiche « Mousse au chocolat », comptez 20 minutes. Il vous faut : chocolat noir, oeufs, sucre.
+Fiches utilisées : Mousse au chocolat
+(.venv) ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % python assistant.py "Que faire avec des lentilles ?" --sources 
+D'après la fiche « Salade de lentilles », comptez 30 minutes. Il vous faut : lentilles, carotte, oignon rouge, moutarde, vinaigre.
+Fiches utilisées : Salade de lentilles
+(.venv) ludovicscelles@MacBook-Pro-de-Ludovic atelier-python % 
+
+Pour une recette au chocolat, la recherche fonctionne car le mot "chocolat" est présent dans le titre de la fiche "Mousse au chocolat".
+Pour une recette avec des lentilles, la recherche fonctionne car le mot "lentilles" est présent dans le titre de la fiche "Salade de lentilles".
+
+En revanche, si je demande une recette "vegan", la recherche ne retrouve pas les recettes "vegan" comme le taboulé.
+La fonction chercher() ne trouve pas de correspondance car le mot "vegan" n'est pas présent dans le titre ou les ingrédient.
+Or "vegan" se trouve dans le champs "tags", qui n'est pris en compte par la recherche.
+
+

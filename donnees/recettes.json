@@ -1,0 +1,243 @@
+[
+  {
+    "id": 1,
+    "titre": "Ratatouille",
+    "categorie": "plat",
+    "temps_min": 75,
+    "ingredients": [
+      "courgette",
+      "aubergine",
+      "poivron",
+      "tomate",
+      "oignon",
+      "huile d'olive"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 2,
+    "titre": "Quiche lorraine",
+    "categorie": "plat",
+    "temps_min": 55,
+    "ingredients": [
+      "pâte brisée",
+      "lardons",
+      "oeufs",
+      "crème",
+      "lait",
+      "muscade"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3,
+    "titre": "Omelette aux champignons",
+    "categorie": "plat",
+    "temps_min": 15,
+    "ingredients": [
+      "oeufs",
+      "champignons",
+      "beurre",
+      "persil"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 4,
+    "titre": "Gratin dauphinois",
+    "categorie": "accompagnement",
+    "temps_min": 80,
+    "ingredients": [
+      "pommes de terre",
+      "crème",
+      "lait",
+      "ail",
+      "muscade"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 5,
+    "titre": "Soupe de potiron",
+    "categorie": "entree",
+    "temps_min": 40,
+    "ingredients": [
+      "potiron",
+      "oignon",
+      "bouillon",
+      "crème"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 6,
+    "titre": "Salade de lentilles",
+    "categorie": "entree",
+    "temps_min": 30,
+    "ingredients": [
+      "lentilles",
+      "carotte",
+      "oignon rouge",
+      "moutarde",
+      "vinaigre"
+    ],
+    "tags": [
+      "vegan",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 7,
+    "titre": "Poulet rôti",
+    "categorie": "plat",
+    "temps_min": 90,
+    "ingredients": [
+      "poulet",
+      "beurre",
+      "thym",
+      "ail",
+      "pommes de terre"
+    ],
+    "tags": [
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 8,
+    "titre": "Risotto aux champignons",
+    "categorie": "plat",
+    "temps_min": 35,
+    "ingredients": [
+      "riz arborio",
+      "champignons",
+      "bouillon",
+      "parmesan",
+      "vin blanc"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 9,
+    "titre": "Chili sin carne",
+    "categorie": "plat",
+    "temps_min": 50,
+    "ingredients": [
+      "haricots rouges",
+      "tomate",
+      "poivron",
+      "oignon",
+      "cumin",
+      "riz"
+    ],
+    "tags": [
+      "vegan",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 10,
+    "titre": "Croque-monsieur",
+    "categorie": "plat",
+    "temps_min": 20,
+    "ingredients": [
+      "pain de mie",
+      "jambon",
+      "emmental",
+      "beurre"
+    ],
+    "tags": []
+  },
+  {
+    "id": 11,
+    "titre": "Pâtes carbonara",
+    "categorie": "plat",
+    "temps_min": 20,
+    "ingredients": [
+      "spaghetti",
+      "lardons",
+      "oeufs",
+      "parmesan",
+      "poivre"
+    ],
+    "tags": []
+  },
+  {
+    "id": 12,
+    "titre": "Taboulé",
+    "categorie": "entree",
+    "temps_min": 25,
+    "ingredients": [
+      "semoule",
+      "tomate",
+      "concombre",
+      "menthe",
+      "citron"
+    ],
+    "tags": [
+      "vegan"
+    ]
+  },
+  {
+    "id": 13,
+    "titre": "Crêpes",
+    "categorie": "dessert",
+    "temps_min": 30,
+    "ingredients": [
+      "farine",
+      "oeufs",
+      "lait",
+      "beurre",
+      "sucre"
+    ],
+    "tags": [
+      "vegetarien"
+    ]
+  },
+  {
+    "id": 14,
+    "titre": "Mousse au chocolat",
+    "categorie": "dessert",
+    "temps_min": 20,
+    "ingredients": [
+      "chocolat noir",
+      "oeufs",
+      "sucre"
+    ],
+    "tags": [
+      "vegetarien",
+      "sans_gluten"
+    ]
+  },
+  {
+    "id": 15,
+    "titre": "Tarte aux pommes",
+    "categorie": "dessert",
+    "temps_min": 60,
+    "ingredients": [
+      "pâte brisée",
+      "pommes",
+      "sucre",
+      "beurre",
+      "cannelle"
+    ],
+    "tags": [
+      "vegetarien"
+    ]
+  }
+]
+

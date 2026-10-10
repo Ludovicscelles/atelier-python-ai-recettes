@@ -1,0 +1,21 @@
+question;intention_attendue
+J'ai des courgettes et des oeufs, je fais quoi ce soir ?;recette_frigo
+Il me reste du riz et des champignons, une idée de dîner ?;recette_frigo
+Je n'ai pas le temps, une recette en moins de 20 minutes ?;recette_frigo
+Je n'ai plus de crème, je peux mettre quoi à la place ?;substitution
+Comment remplacer le beurre dans une tarte ?;substitution
+Je n'ai pas de parmesan pour le risotto;substitution
+Mon riz colle toujours, comment le cuire ?;cuisson_technique
+Le poulet est encore rose à l'intérieur, c'est normal ?;cuisson_technique
+Ma quiche est brûlée dessous, pourquoi ?;cuisson_technique
+Est-ce que le gratin se congèle ?;conservation
+Combien de jours garder une soupe au frigo ?;conservation
+Peut-on réchauffer un risotto déjà cuit ?;conservation
+Mon fils est allergique aux arachides, la mousse est sans risque ?;allergie_sante
+Je suis intolérant au lactose, quelle recette ?;allergie_sante
+Je suis enceinte, puis-je manger la carbonara ?;allergie_sante
+On m'a prélevé deux fois mon abonnement;compte_abonnement
+Je veux résilier mon compte;compte_abonnement
+Ma carte a été débitée mais je n'ai rien reçu;compte_abonnement
+Vous livrez à Lyon ?;autre
+Quelle est la meilleure recette de gâteau pour un anniversaire ?;autre
